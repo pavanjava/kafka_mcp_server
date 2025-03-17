@@ -1,0 +1,5 @@
+mcp[cli]
+aiokafka
+python-dotenv
+pydantic>=2.10.6
+pydantic-settings~=2.8.1
