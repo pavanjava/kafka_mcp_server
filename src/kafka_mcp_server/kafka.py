@@ -52,7 +52,7 @@ class KafkaConnector:
             key = str(uuid.uuid4())
             # Convert value to bytes if it's not already
             if isinstance(value, dict):
-                value_bytes = json.dumps(value).encode('utf-8')
+                value_bytes = json.dumps(value)
             elif isinstance(value, str):
                 value_bytes = value.encode('utf-8')
             else:
