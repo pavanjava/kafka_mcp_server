@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/pavanjava-kafka-mcp-server-badge.png)](https://mseep.ai/app/pavanjava-kafka-mcp-server)
+
 # Kafka MCP Server
 
 A Message Context Protocol (MCP) server that integrates with Apache Kafka to provide publish and consume functionalities for LLM and Agentic applications.
