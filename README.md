@@ -107,3 +107,38 @@ Publishes information to the configured Kafka topic.
 
 consume information from the configured Kafka topic.
 - Note: once a message is read from the topic it can not be read again using the same groupid
+
+### Create-Topic
+Creates a new Kafka topic with specified parameters.
+- **Options**:
+   - `--topic`Name of the topic to create
+   - `--partitions`Number of partitions to allocate
+   - `--replication-factor`Replication factor across brokers
+   - `--config`(optional) Topic-level configuration overrides (e.g., `retention.ms=604800000`)
+
+### Delete-Topic
+Deletes an existing Kafka topic.
+- **Options**:
+   - `--topic`Name of the topic to delete
+   - `--timeout`(optional) Time to wait for deletion to complete
+
+### List-Topics
+Lists all topics in the cluster (or filtered by pattern).
+- **Options**:
+   - `--bootstrap-server`Broker address
+   - `--pattern`(optional) Regular expression to filter topic names
+   - `--exclude-internal`(optional) Exclude internal topics (default: true)
+
+### Topic-Configuration
+Displays or alters configuration for one or more topics.
+- **Options**:
+   - `--describe`Show current configs for a topic
+   - `--alter`Modify configs (e.g., `--add-config retention.ms=86400000,--delete-config cleanup.policy`)
+   - `--topic`Name of the topic
+
+### Topic-Metadata
+Retrieves metadata about a topic or the cluster.
+- **Options**:
+   - `--topic`(If provided) Fetch metadata only for this topic
+   - `--bootstrap-server`Broker address
+   - `--include-offline`(optional) Include brokers or partitions that are offline  
