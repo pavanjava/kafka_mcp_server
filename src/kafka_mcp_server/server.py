@@ -81,3 +81,57 @@ async def consumer(ctx: Context) -> str:
     ]
     information = await kafka_connector.consume()
     return f"consumed: {information}"
+
+@mcp.tool(name="create-topic", description=tool_settings.tool_create_topic_description)
+async  def create_topic(ctx: Context, information: Any):
+    await ctx.debug(f"Creating topic with {information}")
+    kafka_connector: KafkaConnector = ctx.request_context.lifespan_context[
+        "kafka_connector"
+    ]
+    kafka_connector.create_topic(topic_name=information)
+    return f"topic: {information} created"
+
+@mcp.tool(name="delete-topic", description=tool_settings.tool_delete_topic_description)
+async def delete_topic(ctx: Context, information: Any):
+    await ctx.debug(f"Deleting topic: {information}")
+    kafka_connector: KafkaConnector = ctx.request_context.lifespan_context[
+        "kafka_connector"
+    ]
+    kafka_connector.delete_topic(topic_name=information)
+    return f"topic: {information} deleted"
+
+@mcp.tool(name="list-topics", description=tool_settings.tool_list_topic_description)
+async def list_topics(ctx: Context):
+    await ctx.debug(f"fetching the list of topics")
+    kafka_connector: KafkaConnector = ctx.request_context.lifespan_context[
+        "kafka_connector"
+    ]
+    response = kafka_connector.list_topics()
+    return f"topics available: {response}"
+
+@mcp.tool(name="topic-config", description=tool_settings.tool_topic_config_description)
+async def topic_config(ctx: Context, information: Any):
+    await ctx.debug(f"fetching the topic configuration")
+    kafka_connector: KafkaConnector = ctx.request_context.lifespan_context[
+        "kafka_connector"
+    ]
+    response = kafka_connector.get_topic_config(topic_name=information)
+    return f"topic config: {response}"
+
+@mcp.tool(name="cluster-health", description=tool_settings.tool_cluster_health_description)
+async def cluster_health(ctx: Context):
+    await ctx.debug(f"fetching the cluster health")
+    kafka_connector: KafkaConnector = ctx.request_context.lifespan_context[
+        "kafka_connector"
+    ]
+    response = kafka_connector.check_cluster_health()
+    return f"cluster health: {response}"
+
+@mcp.tool(name="cluster-metadata", description=tool_settings.tool_cluster_metadata_description)
+async def cluster_metadata(ctx: Context):
+    await ctx.debug(f"fetching the cluster metadata")
+    kafka_connector: KafkaConnector = ctx.request_context.lifespan_context[
+        "kafka_connector"
+    ]
+    response = kafka_connector.get_cluster_metadata()
+    return f"cluster metadata: {response}"
