@@ -1,4 +1,4 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/pavanjava-kafka-mcp-server-badge.png)](https://mseep.ai/app/pavanjava-kafka-mcp-server)
+[![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/f159a924-db1c-42f8-825b-b8a1795c1437)
 
 # Kafka MCP Server
 
